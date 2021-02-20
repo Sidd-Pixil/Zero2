@@ -51,7 +51,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hey {}, I am {}!* 
+*Heya! {}, I am {}* 
 *A powerfull group management bot,I can help you in managing your Groups Themed from* [Darling In the Franxx]!
 
 """
