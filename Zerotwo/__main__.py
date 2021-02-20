@@ -52,7 +52,7 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 *Hey {}, I am {}!* 
-*A multipurpose group management bot,I can help you in managing your Groups Themed from* [Darling In the Franxx]!
+*A powerfull group management bot,I can help you in managing your Groups Themed from* [Darling In the Franxx]!
 
 """
 
@@ -187,31 +187,31 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="☑️ Add Zero Two to your group",
+                            text="👥 Add Zero Two to your group",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                     ],
                      [
                          InlineKeyboardButton(
-                             text="🚑 Zero Two Support",
+                             text=" Zero Two Support👥",
                              url=f"https://t.me/zero2botsupport"),
                          InlineKeyboardButton(
-                             text="🧭 Zero Two Updates",
+                             text=" Zero Two Updates",
                              url="https://t.me/zero2updates"),              
                     ],
                      [
                         InlineKeyboardButton(
-                             text="📍 Getting Started Guide",
+                             text=" Getting Started Guide",
                              url="https://t.me/zero2updates/14")                    
                     ],
                      [
                         InlineKeyboardButton(
-                             text="🔩 Logs Channel",
+                             text=" Logs Channel",
                              url="https://t.me/zero2logs")                    
                     ],                     
                       [
                         InlineKeyboardButton(
-                             text="💫Commands/Help💫",
+                             text="Commands/Help",
                              url="https://t.me/Zero_2_Robot?start=help")      
                     ]]))
     else:
