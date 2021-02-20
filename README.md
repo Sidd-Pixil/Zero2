@@ -9,7 +9,7 @@ Can be found on telegram as [Zero_2_Robot](https://t.me/Zero_2_Robot).
 
 The Support group can be reached out to at [zero2botsupport](https://t.me/zero2botsupport), where you can ask for help about [Zero 2](https://t.me/Zero_2_Robot), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
 
-News channel as at Zero2updates](https://t.me/zero2updates) 
+News channel as at [Zero2updates](https://t.me/zero2updates) 
 
 ## How to setup/deploy.
 
