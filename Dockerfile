@@ -65,7 +65,7 @@ RUN apt update && apt upgrade -y && \
 RUN pip3 install --upgrade pip setuptools
 
 # Copy Python Requirements to /root/Zerotwo
-RUN git clone -b shiken https://github.com/AnimeKaizoku/Zerotwo /root/Zerotwo
+RUN git clone -b shiken https://github.com/Sidd-Pixil/Zerotwo /root/Zerotwo
 WORKDIR /root/Zerotwo
 
 #Copy config file to /root/Zerotwo/Zerotwo
