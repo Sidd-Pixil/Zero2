@@ -1,7 +1,7 @@
 import asyncio, time, os, asyncio, json
 from telethon.tl.types import DocumentAttributeAudio
-from Zerotwo.events import register
-from Zerotwo.utlis import progress
+from SaitamaRobot.events import register
+from SaitamaRobot.utlis import progress
 from youtube_dl import YoutubeDL
 from youtube_dl.utils import (DownloadError, ContentTooShortError,
 
@@ -35,9 +35,9 @@ async def download_video(v_url):
     try:
        url = q[0]['link']
     except:
-    	return await rkp.edit("`Sorry failed to find`")
+    	return await rkp.edit("`failed to find`")
     type = "audio"
-    await rkp.edit("`Ruko Zara Sabar kro .Preparing to download...`")
+    await rkp.edit("`Preparing to download...`")
     if type == "audio":
         opts = {
             'format':
