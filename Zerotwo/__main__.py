@@ -64,8 +64,8 @@ HELP_STRINGS = """
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-KURISU_IMG = "https://telegra.ph/file/0b930645486429d762231.gif"
-KURISUIMGSTART = "https://telegra.ph/file/c2dcfa1a945502566db0f.gif"
+ZERO_IMG = "https://telegra.ph/file/0b930645486429d762231.gif
+ZEROIMGSTART = "https://telegra.ph/file/c2dcfa1a945502566db0f.gif"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 You can donate to the original writer of the Base code, Paul
@@ -178,7 +178,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_animation(
-                KURISU_IMG,
+                ZERO_IMG,
                 caption=PM_START_TEXT.format(
                     escape_markdown(first_name),
                     escape_markdown(context.bot.first_name)),
@@ -187,31 +187,31 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="👥 Add Zero Two to your group",
+                            text="✅Add Zero Two to your group",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                     ],
                      [
                          InlineKeyboardButton(
-                             text=" Zero Two Support👥",
+                             text="📡Zero Two Support",
                              url=f"https://t.me/zero2botsupport"),
                          InlineKeyboardButton(
-                             text=" Zero Two Updates",
+                             text="🚑Zero Two Updates",
                              url="https://t.me/zero2updates"),              
                     ],
                      [
                         InlineKeyboardButton(
-                             text=" Getting Started Guide",
+                             text="📍Getting Started Guide",
                              url="https://t.me/zero2updates/14")                    
                     ],
                      [
                         InlineKeyboardButton(
-                             text=" Logs Channel",
+                             text="🔩Logs Channel",
                              url="https://t.me/zero2logs")                    
                     ],                     
                       [
                         InlineKeyboardButton(
-                             text="Commands/Help",
+                             text="💫Commands/Help",
                              url="https://t.me/Zero_2_Robot?start=help")      
                     ]]))
     else:
