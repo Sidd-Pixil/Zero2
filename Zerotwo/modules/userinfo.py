@@ -28,7 +28,84 @@ from Zerotwo import telethn as SaitamaTelethonClient, TIGERS, DRAGONS, DEMONS
 
 
 
+def no_by_per(totalhp, percentage):
+    """
+    rtype: num of percentage from total
+    eg: 1000, 10 -> 10% of 1000 (100)
+    """
+    return totalhp * percentage / 100
 
+
+def get_percentage(totalhp, earnedhp):
+    """
+    rtype: percentage of totalhp num
+    eg: (1000, 100) will return 10%
+    """
+
+    matched_less = totalhp - earnedhp
+    per_of_totalhp = 100 - matched_less * 100.0 / totalhp
+    per_of_totalhp = str(int(per_of_totalhp))
+    return per_of_totalhp
+
+
+def hpmanager(user):
+    total_hp = (get_user_num_chats(user.id) + 10) * 10
+
+    if not is_user_gbanned(user.id):
+
+        # Assign new var new_hp since we need total_hp in
+        # end to calculate percentage.
+        new_hp = total_hp
+
+        # if no username decrease 25% of hp.
+        if not user.username:
+            new_hp -= no_by_per(total_hp, 25)
+        try:
+            dispatcher.bot.get_user_profile_photos(user.id).photos[0][-1]
+        except IndexError:
+            # no profile photo ==> -25% of hp
+            new_hp -= no_by_per(total_hp, 25)
+        # if no /setme exist ==> -20% of hp
+        if not sql.get_user_me_info(user.id):
+            new_hp -= no_by_per(total_hp, 20)
+        # if no bio exsit ==> -10% of hp
+        if not sql.get_user_bio(user.id):
+            new_hp -= no_by_per(total_hp, 10)
+
+        if is_afk(user.id):
+            afkst = check_afk_status(user.id)
+            # if user is afk and no reason then decrease 7%
+            # else if reason exist decrease 5%
+            if not afkst.reason:
+                new_hp -= no_by_per(total_hp, 7)
+            else:
+                new_hp -= no_by_per(total_hp, 5)
+
+        # fbanned users will have (2*number of fbans) less from max HP
+        # Example: if HP is 100 but user has 5 diff fbans
+        # Available HP is (2*5) = 10% less than Max HP
+        # So.. 10% of 100HP = 90HP
+
+
+# Commenting out fban health decrease cause it wasnt working and isnt needed ig.
+#_, fbanlist = get_user_fbanlist(user.id)
+#new_hp -= no_by_per(total_hp, 2 * len(fbanlist))
+
+# Bad status effects:
+# gbanned users will always have 5% HP from max HP
+# Example: If HP is 100 but gbanned
+# Available HP is 5% of 100 = 5HP
+
+    else:
+        new_hp = no_by_per(total_hp, 5)
+
+    return {
+        "earnedhp": int(new_hp),
+        "totalhp": int(total_hp),
+        "percentage": get_percentage(total_hp, new_hp)
+    }
+  
+  
 def make_bar(per):
     done = min(round(per / 10), 10)
     return "■" * done + "□" * (10 - done)
@@ -178,7 +255,8 @@ def info(update: Update, context: CallbackContext):
                 elif status in {"administrator", "creator"}:
                     text += _stext.format("Admin")
     if user_id not in [bot.id, 777000, 1087968824]:
-        
+        userhp = hpmanager(user)
+        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     try:
         spamwtc = sw.get_ban(int(user.id))
@@ -200,16 +278,16 @@ def info(update: Update, context: CallbackContext):
         text += "\n\nThis user is friend of 'GOD'."
         disaster_level_present = True
     elif user.id in DRAGONS:
-        text += "\n\nshh,This user is having access of doing 'Globally ban' across me."
+        text += "\n\nShh,This user is having access of doing 'Globally ban' across me."
         disaster_level_present = True
     elif user.id in DEMONS:
-        text += "\n\nshh,This user is having access of doing 'Globally ban' across me."
+        text += "\n\nShh,This user is having access of doing 'Globally ban' across me."
         disaster_level_present = True
     elif user.id in TIGERS:
-        text += "\n\nshh,This user is having access of doing 'Globally ban' across me."
+        text += "\n\nShh,This user is having access of doing 'Globally ban' across me."
         disaster_level_present = True
     elif user.id in WOLVES:
-        text += "\n\nshh,This user is having access of doing 'Globally ban' across me."
+        text += "\n\nShh,This user is having access of doing 'Globally ban' across me."
         disaster_level_present = True
 
     if disaster_level_present:
@@ -306,6 +384,18 @@ def set_about_me(update: Update, context: CallbackContext):
     text = message.text
     info = text.split(None, 1)
     if len(info) == 2:
+      if len(info[1]) < MAX_MESSAGE_LENGTH // 4:
+            sql.set_user_me_info(user_id, info[1])
+            if user_id in [777000, 1087968824]:
+                message.reply_text("Authorized...Information updated!")
+            elif user_id == bot.id:
+                message.reply_text(
+                    "I have updated my info with the one you provided!")
+            else:
+                message.reply_text("Information updated!")
+        else:
+            message.reply_text(
+                "The info needs to be under {} characters! You have {}.".format(
         if len(info[1]) < MAX_MESSAGE_LENGTH // 4:
             sql.set_user_me_info(user_id, info[1])
             if user_id in [777000, 1087968824]:
