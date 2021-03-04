@@ -56,13 +56,13 @@ An example `config.py` file could be:
 from Zerotwo.sample_config import Config
 
 class Development(Config):
-    OWNER_ID = 1483971607  # your telegram ID
-    OWNER_USERNAME = "nezuko_chan02"  # your telegram username
+    OWNER_ID = 1364843887.  # your telegram ID
+    OWNER_USERNAME = "Clutch_g0d"  # your telegram username
     API_KEY = "1498917276:AAEWYIKwfqTatXNuvaEfBl5BLETL9llaDZM"  # your api key, as provided by the @botfather
     SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost:5432/database'  # sample db credentials
     JOIN_LOGGER = '-1001321966293' # some group chat that your bot is a member of
     USE_JOIN_LOGGER = True
-    DRAGONS = [1396244257, 998194558, 979499093, 781807433, 1234713106]  # List of id's for users which have sudo access to the bot.
+    DRAGONS = [1396****57, 99**94558, 97**99093, 78**07433, 12**713106]  # List of id's for users which have sudo access to the bot.
     LOAD = []
     NO_LOAD = ['translation']
 ```
