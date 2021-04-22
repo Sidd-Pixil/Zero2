@@ -201,13 +201,13 @@ def start(update: Update, context: CallbackContext):
                     ],
                      [
                         InlineKeyboardButton(
-                             text="📍Getting Started Guide",
+                             text="Getting Started Guide",
                              url="https://t.me/zero2updates/14")                    
                     ],
                      [
                         InlineKeyboardButton(
-                             text="🔩Logs Channel",
-                             url="https://t.me/zero2logs")                    
+                             text="Our Networ",
+                             url="https://t.me/Anime_HeavenD")                    
                     ],                     
                       [
                         InlineKeyboardButton(
