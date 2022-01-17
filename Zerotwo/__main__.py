@@ -64,7 +64,7 @@ HELP_STRINGS = """
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-ZERO_IMG = "https://telegra.ph/file/0b930645486429d762231.gif
+ZERO_IMG = "https://telegra.ph/file/0b930645486429d762231.gif"
 ZEROIMGSTART = "https://telegra.ph/file/c2dcfa1a945502566db0f.gif"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
